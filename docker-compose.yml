@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: graphql_user
       POSTGRES_PASSWORD: graphql_password
     ports:
-      - "1395:1395"
+      - "1395:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql

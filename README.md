@@ -20,7 +20,7 @@ This project provides a PostgreSQL database setup for practicing GraphQL with Do
 3. **Connect to the database:**
    ```bash
    # Using psql (if you have PostgreSQL client installed)
-   psql -h localhost -p 5432 -U graphql_user -d graphql_playground
+   psql -h localhost -p 1395 -U graphql_user -d graphql_playground
    
    # Or connect via Docker
    docker exec -it graphql_postgres psql -U graphql_user -d graphql_playground
@@ -60,7 +60,7 @@ The database comes pre-populated with:
 ## 🛠️ Database Connection Details
 
 - **Host:** `localhost`
-- **Port:** `5432`
+- **Port:** `1395`
 - **Database:** `graphql_playground`
 - **Username:** `graphql_user`
 - **Password:** `graphql_password`
@@ -128,10 +128,10 @@ You can customize the database setup by modifying the environment variables in `
 ## 🐛 Troubleshooting
 
 ### Port Already in Use
-If port 5432 is already in use, modify the port mapping in `docker-compose.yml`:
+If port 1395 is already in use, modify the port mapping in `docker-compose.yml`:
 ```yaml
 ports:
-  - "5433:5432"  # Use port 5433 instead
+  - "1396:5432"  # Use port 1396 instead
 ```
 
 ### Permission Issues
