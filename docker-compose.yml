@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: graphql_postgres
+    environment:
+      POSTGRES_DB: graphql_playground
+      POSTGRES_USER: graphql_user
+      POSTGRES_PASSWORD: graphql_password
+    ports:
+      - "1395:1395"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U graphql_user -d graphql_playground"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data: 
