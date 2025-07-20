@@ -1,3 +1,6 @@
+(todo o cenário base foi gerado c/ ajuda de IA)
+
+
 # GraphQL Playground Database
 
 This project provides a PostgreSQL database setup for practicing GraphQL with Docker Compose. It includes a comprehensive schema with sample data that covers common GraphQL patterns like relationships, nested queries, and mutations.
