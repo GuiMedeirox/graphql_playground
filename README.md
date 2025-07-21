@@ -143,22 +143,114 @@ Check the logs for any errors:
 docker-compose logs postgres
 ```
 
+## 🚀 Apollo GraphQL Server Setup
+
+This project includes a complete Apollo GraphQL server setup. Here's how to get started:
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Set up Environment Variables
+Create a `.env` file based on `env.example`:
+```bash
+cp env.example .env
+```
+
+### 3. Start the GraphQL Server
+```bash
+# Development mode with hot reload
+npm run dev
+
+# Or build and run in production
+npm run build
+npm start
+```
+
+### 4. Access the GraphQL Playground
+- **GraphQL Endpoint:** http://localhost:4000/graphql
+- **Apollo Studio:** http://localhost:4000/graphql (with enhanced UI)
+- **Health Check:** http://localhost:4000/health
+
+## 📝 Example Queries
+
+The server includes comprehensive queries and mutations. Check `src/queries.ts` for examples:
+
+### Get All Users with Posts
+```graphql
+query GetAllUsers {
+  users {
+    id
+    username
+    email
+    firstName
+    lastName
+    posts {
+      id
+      title
+      published
+    }
+  }
+}
+```
+
+### Get Published Posts with Stats
+```graphql
+query GetPublishedPosts {
+  publishedPosts {
+    id
+    title
+    content
+    author {
+      username
+      firstName
+      lastName
+    }
+    categories {
+      name
+    }
+    tags {
+      name
+    }
+    likeCount
+    commentCount
+  }
+}
+```
+
+### Create a New Post
+```graphql
+mutation CreatePost($title: String!, $content: String!, $authorId: ID!) {
+  createPost(title: $title, content: $content, authorId: $authorId, published: true) {
+    id
+    title
+    author {
+      username
+    }
+  }
+}
+```
+
+## 🔧 Available Features
+
+- ✅ **Complete CRUD operations** for all entities
+- ✅ **Nested queries** with automatic resolution
+- ✅ **Real-time statistics** via database views
+- ✅ **Type-safe resolvers** with TypeScript
+- ✅ **Error handling** and logging
+- ✅ **Health check endpoint**
+- ✅ **Hot reload** in development
+
 ## 📚 Next Steps
 
-Once your database is running, you can:
+Once your GraphQL server is running, you can:
 
-1. **Set up a GraphQL server** (Node.js/Express, Python/FastAPI, etc.)
-2. **Create GraphQL resolvers** for each table
-3. **Implement queries and mutations**
-4. **Add authentication and authorization**
-5. **Build a frontend** to interact with your GraphQL API
+1. **Test queries** in Apollo Studio
+2. **Build a frontend** (React, Vue, etc.) to consume the API
+3. **Add authentication** and authorization
+4. **Implement real-time subscriptions**
+5. **Add caching** with Redis
+6. **Deploy** to production
 
-## 🤝 Contributing
 
-Feel free to enhance this setup by:
-- Adding more sample data
-- Creating additional database views
-- Improving the schema design
-- Adding more complex relationships
-
-Happy GraphQL coding! 🎉 
